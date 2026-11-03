@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当传统孝道遇上数字时代 - 我与社会期末作业</title>
+    <style>
+        /* 基础样式 */
+        :root {
+            --bg-color: #f7f5f0; /* 宣纸底色 */
+            --text-main: #333333;
+            --text-light: #666666;
+            --accent-red: #c23531; /* 朱砂红 */
+            --accent-blue: #2b5797; /* 科技蓝 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 顶部导航 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(247, 245, 240, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-red);
+            letter-spacing: 2px;
+        }
+
+        /* 第一屏：主视觉 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(247,245,240,0.8), rgba(247,245,240,0.9)), url('https://www.transparenttextures.com/patterns/rice-paper.png'); /* 模拟宣纸纹理 */
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: "KaiTi", "楷体", serif; /* 传统字体 */
+            letter-spacing: 4px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-red);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: normal;
+            margin-bottom: 40px;
+            letter-spacing: 8px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* 分割线 */
+        .divider {
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-red);
+            margin: 40px auto;
+        }
+
+        /* 内容区块通用样式 */
+        section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 60px;
+            font-family: "KaiTi", "楷体", serif;
+        }
+
+        /* 卡片布局 */
+        .cards-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent-red);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .card.modern {
+            border-top-color: var(--accent-blue);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* 行动倡议区块 */
+        .action-section {
+            background-color: var(--text-main);
+            color: #fff;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .action-section .section-title {
+            color: #fff;
+        }
+
+        .action-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .action-list li {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .action-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+        }
+
+        /* 底部说明 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #eee;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* 动画效果类 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero h2 { font-size: 1.1rem; letter-spacing: 4px; }
+            section { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">《我与社会》期末创意作业</div>
+    </header>
+
+    <!-- 首屏 -->
+    <div class="hero">
+        <h1>当<span>传统孝道</span>遇上数字时代</h1>
+        <h2>不让科技成为亲情的高墙</h2>
+        <p>中华传统美德中的“孝”，在现代社会有了新的命题。面对飞速发展的数字生活，如何牵起长辈的手，帮助他们跨越“数字鸿沟”，是我们这一代人践行孝道的新方式。</p >
+        <div class="divider"></div>
+    </div>
+
+    <!-- 碰撞与思考 -->
+    <section>
+        <h2 class="section-title reveal">传统与现代的碰撞</h2>
+        <div class="cards-container">
+            <div class="card reveal">
+                <h3>📜 传统的“孝”</h3>
+                <p>《孝经》云：“夫孝，天之经也，地之义也。” 传统孝道强调物质上的赡养与精神上的顺从。在过去的农耕社会，陪伴就是最长情的告白。</p >
+            </div>
+            <div class="card modern reveal">
+                <h3>📱 现代的“困”</h3>
+                <p>现代社会中，智能手机、移动支付、线上挂号成为生活必需。然而，许多老年人面对二维码、APP感到无所适从，成为了数字时代的“边缘人”。</p >
+            </div>
+            <div class="card reveal" style="border-top-color: #e6a23c;">
+                <h3>🤝 社会的“融”</h3>
+                <p>作为社会的一员，我们不仅要推进社会的数字化，更要倡导“适老化”改造，用耐心和爱去反哺长辈。科技向善，才是现代社会对传统美德的最好传承。</p >
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动倡议 -->
+    <section class="action-section">
+        <h2 class="section-title reveal">从“我”做起：新时代的孝道实践</h2>
+        <ul class="action-list">
+            <li class="reveal"><strong>做长辈的“专属客服”：</strong> 耐心教他们使用微信视频、发送红包、线上挂号等常用功能，手绘一份“手机使用说明书”。</li>
+            <li class="reveal"><strong>守护信息安全：</strong> 帮长辈手机安装反诈APP，给他们讲解常见的网络诈骗套路，用现代知识守护他们的养老钱。</li>
+            <li class="reveal"><strong>跨越物理距离的陪伴：</strong> 利用互联网，即使不在身边，也能通过外卖给父母点一份热汤，通过监控看看他们是否安好。</li>
+            <li class="reveal"><strong>社会倡导：</strong> 在社区担任志愿者，帮助更多社区老人学习使用智能设备，让数字时代的红利惠及每一个人。</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>课程：《我与社会》 | 主题：当中华传统美德遇上现代生活</p >
+        <p>形式：网页设计 | 创作者：[陈安奕坤1367893]</p >
+    </footer>
+
+    <script>
+        // 滚动显现动画脚本
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // 初始化时触发一次，防止首屏不显示
+        reveal();
+    </script>
+</body>
+</html>
